@@ -1,0 +1,13 @@
+package sortAlgorithms;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] v = {3,7,2,5,1,6,10};
+	    
+		BubbleSort bs = new BubbleSort(v);
+	    v = bs.sort();
+	    System.out.println(v.toString());
+	}
+}
