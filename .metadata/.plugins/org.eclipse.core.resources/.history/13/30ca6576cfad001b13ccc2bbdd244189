@@ -1,0 +1,25 @@
+package sortAlgorithms;
+import java.util.ArrayList;
+
+public class MergeSort {
+	
+	public int[] sort(int[] a) {
+		if (a.length == 1)
+			return a;
+		
+		int[] arr1 = new int[a.length/2];
+		for (int i=0;i<=a.length/2; i++)
+			arr1[i] = a[i];
+		
+		int[] arr2 = new int[a.length/2];
+		for (int i=a.length/2+1; i<a.length; i++)
+			arr2[i] = a[i];
+		
+		arr1 = sort(arr1);
+		arr2 = sort(arr2);
+		
+		return merge(arr1, arr2);
+	}
+	
+	public int[] merge 
+}
