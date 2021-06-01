@@ -2,22 +2,27 @@ package sortAlgorithms;
 
 public class InsertionSort {
 	
-	private int[] v;
-	
-	public InsertionSort(int[] v) {
-		this.v = v;
-	}
-	
-	public int[] sort() {
-		for (int i=0; i<this.v.length; i++) {
-			int pivo = this.v[i];
+	public int[] sort(int[] v) {
+		long comp = 0;
+		long troc = 0;
+		for (int i=0; i<v.length; i++) {
+			//Pivo
+			int pivo = v[i];
 			int j = i - 1;
-			while (j>=0 && this.v[j]>pivo) {
-				this.v[j+1] = this.v[j];
+			//Comparação
+			while (j>=0 && v[j]>pivo) {
+				comp++;
+				//Troca
+				troc++;
+				v[j+1] = v[j];
 				j = j - 1;
 			}
-			this.v[j+1] = pivo;
+			//Troca
+			v[j+1] = pivo;
 		}
-		return this.v;
+		System.out.println(comp+" comparacoes");
+		System.out.println(troc+" trocas");
+		return v;
 	}
 }
+

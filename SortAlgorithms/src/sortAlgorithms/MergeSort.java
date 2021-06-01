@@ -3,7 +3,11 @@ import java.util.ArrayList;
 
 public class MergeSort {
 	
+	int comp = 0;
+	int troc = 0;
+	
 	public ArrayList<Integer> sort(ArrayList<Integer> a) {
+		
 		if (a.size() == 1) {
 			return a;
 		}
@@ -27,11 +31,17 @@ public class MergeSort {
 		ArrayList<Integer> c = new ArrayList<Integer>();
 		
 		while (a.size() != 0 && b.size() != 0) {
+			//Comparação
+			this.comp++;
 			if (a.get(0) > b.get(0)) {
+				//Troca
+				this.troc++;
 				c.add(b.get(0));
 				b.remove(0);
 			}
 			else {
+				//Troca
+				this.troc++;
 				c.add(a.get(0));
 				a.remove(0);
 			}
@@ -49,4 +59,13 @@ public class MergeSort {
 		
 		return c;
 	}
+	
+	public ArrayList<Integer> arrToList(int[] v) {
+		ArrayList<Integer> a = new ArrayList<Integer>();
+		for (int i=0; i<v.length; i++)
+			a.add(v[i]);
+		
+		return a;
+	}
+
 }

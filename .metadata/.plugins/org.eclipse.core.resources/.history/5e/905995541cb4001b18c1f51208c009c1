@@ -1,0 +1,81 @@
+package sortAlgorithms;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	    int n = 100000;
+		
+		//int[] v = {5,3,7,1};
+ 		
+		//Instanciando algoritmos de ordenação
+		BubbleSort bs = new BubbleSort();
+		SelectionSort ss = new SelectionSort();
+		InsertionSort is = new InsertionSort();
+		MergeSort ms = new MergeSort();
+		QuickSort qs = new QuickSort();
+		
+		ZonedDateTime aDateTime = ZonedDateTime.now();
+	    
+		
+	    int[] v;
+	    
+		/*v = gerarVetor(n);
+		v = bs.sort(v);
+		
+		v = gerarVetor(n);
+		v = ss.sort(v);
+		
+		v = gerarVetor(n);
+		v = is.sort(v);
+		*/
+		v = gerarVetor(n);
+		ArrayList<Integer> a = arrToList(v);
+		a = ms.sort(a);
+		v = listToArr(a);
+		
+		/*v = gerarVetor(n);
+		v = qs.sort(v, 0, v.length-1);*/
+		
+		ZonedDateTime otherDateTime = ZonedDateTime.now();
+
+	    long diff = ChronoUnit.MILLIS.between(aDateTime, otherDateTime);
+	    System.out.println("Difference: " + diff + " miliseconds");
+		
+		/*for(int i=500; i<1000; i++) {
+			System.out.println(v[i]);
+		}*/
+	}
+	
+	public static int[] gerarVetor(int n) {
+		int[] v = new int[n];
+		Random rand = new Random();
+		for (int i=0; i<n; i++) {
+			v[i] = rand.nextInt(n);
+		}
+		
+		return v;
+	}
+	
+	public static ArrayList<Integer> arrToList(int[] v) {
+		ArrayList<Integer> a = new ArrayList<Integer>();
+		for (int i=0; i<v.length; i++)
+			a.add(v[i]);
+		
+		return a;
+	}
+	
+	public static int[] listToArr(ArrayList<Integer> a) {
+		int[] v = new int[a.size()];
+		for (int i=0; i<v.length; i++)
+			v[i] = a.get(i);
+		
+		return v;
+	}
+}

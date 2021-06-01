@@ -2,23 +2,26 @@ package sortAlgorithms;
 
 public class BubbleSort {
 	
-	private int[] v;
-	
-	public BubbleSort(int[] v){
-	  this.v = v;
-	}
-	
-	public int[] sort(){
-	  for (int i=0; i<this.v.length; i++) {
-	    for (int j=0; j<this.v.length-1; j++) {
-	      if (this.v[j] > this.v[j+1]) {
-	        int aux = this.v[j];
-	        this.v[j] = this.v[j+1];
-	        this.v[j+1] = aux;
-	      }
-	    }
-	  }
-	
-	  return this.v;
+	public int[] sort(int[] v){
+		int comp = 0;
+		long troc = 0;
+		for (int i=0; i<v.length; i++) {
+			for (int j=0; j<v.length-1; j++) {
+			//Comparação
+			comp++;
+			if (v[j] > v[j+1]) {
+				//Troca
+				int aux = v[j];
+				v[j] = v[j+1];
+				v[j+1] = aux;
+				troc++;
+				}
+			}
+		}
+		System.out.println(comp+" comparacoes");
+		System.out.println(troc+" trocas");
+		return v;
 	}
 }
+
+

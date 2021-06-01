@@ -2,23 +2,25 @@ package sortAlgorithms;
 
 public class SelectionSort {
 	
-	private int[] v;
-	
-	public SelectionSort(int[] v) {
-		this.v = v;
-	}
-	
-	public int[] sort() {
-		for (int i=0; i<this.v.length-1; i++) {
+	public int[] sort(int[] v) {
+		int comp = 0;
+		int troc = 0;
+		for (int i=0; i<v.length-1; i++) {
 			int min = i;
-			for (int j=i+1; j<this.v.length; j++) {
-				if (this.v[j] < this.v[min])
+			for (int j=i+1; j<v.length; j++) {
+				//Comparação
+				comp++;
+				if (v[j] < v[min])
 					min = j;
 			}
-			int aux = this.v[i];
-			this.v[i] = this.v[min];
-			this.v[min] = aux;
+			//Troca
+			int aux = v[i];
+			v[i] = v[min];
+			v[min] = aux;
+			troc++;
 		}
-		return this.v;
+		System.out.println(comp+" comparacoes");
+		System.out.println(troc+" trocas");
+		return v;
 	}
 }

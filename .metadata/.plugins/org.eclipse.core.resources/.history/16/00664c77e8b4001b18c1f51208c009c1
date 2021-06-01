@@ -1,0 +1,22 @@
+package sortAlgorithms;
+
+public class InsertionSort {
+	
+	public int[] sort(int[] v) {
+		for (int i=0; i<v.length; i++) {
+			//Pivo
+			int pivo = v[i];
+			int j = i - 1;
+			//Comparação
+			while (j>=0 && v[j]>pivo) {
+				//Troca
+				v[j+1] = v[j];
+				j = j - 1;
+			}
+			//Troca
+			v[j+1] = pivo;
+		}
+		return v;
+	}
+}
+
