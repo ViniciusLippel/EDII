@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="vetorAleatorio"/>
+		<item key="selection" value="nodoAnterior"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="nodoAnterior"/>
+			<item value="this.ArvoreAVL"/>
+			<item value="ARVORE"/>
+			<item value="ArvoreAVL"/>
 			<item value="vetorAleatorio"/>
 			<item value="gerarVetorAleatorio"/>
 			<item value="gerarVetor"/>
@@ -17,10 +21,12 @@
 			<item value="mergeSort"/>
 		</list>
 		<list key="replacehistory">
+			<item value="addNodo"/>
+			<item value="ArvoreAVL"/>
+			<item value=""/>
 			<item value="gerarVetor"/>
 			<item value="vetorAleatorio"/>
 			<item value="gerarVetorAleatorio"/>
-			<item value=""/>
 			<item value="ArrayList&lt;Integer&gt;"/>
 			<item value="sort"/>
 		</list>
