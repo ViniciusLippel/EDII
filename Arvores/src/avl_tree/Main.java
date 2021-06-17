@@ -6,10 +6,14 @@ public class Main {
 		// TODO Auto-generated method stub
 		AVLTree a = new AVLTree();
 		a.insert(10);
-		a.insert(13);
+		a.insert(7);
+		a.insert(11);
+		a.insert(12);
 		a.insert(8);
+		a.insert(5);
 		a.insert(9);
-		System.out.println(a.getRoot().getLeft().getRight().getNum());
+		//a.delete(7);
+		System.out.println(a.height(a.findNode(a.getRoot(), 7)));
 	}
 
 }
