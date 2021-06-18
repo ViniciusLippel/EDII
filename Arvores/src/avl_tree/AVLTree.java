@@ -45,7 +45,7 @@ public class AVLTree {
 	}
 	
 	//Delete Node
-	public void delete(int num) {
+	/*public void delete(int num) {
 		Node found = findNode(this.root, num);
 		System.out.println("Deletar nodo "+found.getNum());
 		if (found != null) {
@@ -73,7 +73,49 @@ public class AVLTree {
 				found = null;
 			}
 		}
+	}*/
+	
+	//Delete
+	public void delete(int num) {
+		this.root = deleteNode(this.root, num);
 	}
+	
+	//Delete node
+	public Node deleteNode(Node node, int num) {
+
+        if (node == null)
+            return node;
+        
+        if (num < node.getNum())
+            node.setLeft(deleteNode(node.getLeft(), num));
+        
+        else if (num > node.getNum())
+            node.setRight(deleteNode(node.getRight(), num));
+ 
+        else {
+            if (node.getLeft() == null)
+                return node.getRight();
+            else if (node.getRight() == null)
+                return node.getLeft();
+            node.setNum(successor(node.getRight()));
+            node.setRight(deleteNode(node.getRight(), node.getNum()));
+        }
+ 
+        return node;
+	}
+	
+	//Find successor in order
+	int successor(Node node) {
+		
+        int suc = node.getNum();
+        
+        while (node.getLeft() != null)
+        {
+            suc = node.getLeft().getNum();
+            node = node.getLeft();
+        }
+        return suc;
+    }
 	
 	//Find Node
 	public Node findNode(Node node, int num) {
@@ -92,37 +134,50 @@ public class AVLTree {
 		return null;
 	}
 	
-	//Find successor node in order
-	public Node findSuccessor(Node node) {
-		return findLeftmost(node.getRight());
-	}
-	
-	//Find parent node
-	public Node findParent(Node node) {
-		
-		return null;
-	}
-	
-	//Find leftmost node
-	public Node findLeftmost(Node node) {
-		if (node.getLeft() != null)
-			return findLeftmost(node.getLeft());
-		else
-			return node;
-	}
 	
 	//Verify tree balance
 	public boolean verifyBalance(Node node) {
 		
+		if (node == null)
+			return true;
+		
+		int lh = height(node.getRight());
+		int rh = height(node.getLeft());
+		
+		if (Math.abs(lh - rh) <= 1 && verifyBalance(node.getLeft()) && verifyBalance(node.getRight()))
+			return true;
+		
+		return false;
 	}
 	
 	//Branch height
-	public int branchHeight(Node node) {
+	public int height(Node node) {
 		
         if (node == null)
             return 0;
  
-        return 1 + Math.max(branchHeight(node.getLeft()), branchHeight(node.getRight()));
+        return 1 + Math.max(height(node.getLeft()), height(node.getRight()));
+	}
+	
+	//Verify if other tree is identical
+	public boolean isIdentical(AVLTree avl) {
+		return compare(avl.getRoot(), this.root);
+	}
+	
+	//Compare two trees from root
+	public boolean compare(Node node1, Node node2) {
+		if (node1 == null && node2 == null) {
+			return true;
+		}
+		else 
+	    { 
+	        if (node1.getNum() == node2.getNum() && 
+	            compare(node1.getLeft(), node2.getLeft()) && 
+	            compare(node1.getRight(), node2.getRight()))
+	            return true;
+	    }
+		
+		return false;
 	}
 	
 	//Rotate left
