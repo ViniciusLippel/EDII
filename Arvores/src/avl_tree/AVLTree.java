@@ -98,7 +98,7 @@ public class AVLTree {
 	
 	
 	//Verify tree balance
-	public boolean verifyBalance(Node node) {
+	public boolean verifyAVL(Node node) {
 		
 		if (node == null)
 			return true;
@@ -106,7 +106,7 @@ public class AVLTree {
 		int lh = height(node.getRight());
 		int rh = height(node.getLeft());
 		
-		if (Math.abs(lh - rh) <= 1 && verifyBalance(node.getLeft()) && verifyBalance(node.getRight()))
+		if (Math.abs(lh - rh) <= 1 && verifyAVL(node.getLeft()) && verifyAVL(node.getRight()))
 			return true;
 		
 		return false;
