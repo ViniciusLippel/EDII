@@ -28,6 +28,20 @@ public class Node {
 	public void setLeft(Node left) {
 		this.left = left;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Node [num=");
+		builder.append(num);
+		builder.append(", right=");
+		builder.append(right);
+		builder.append(", left=");
+		builder.append(left);
+		builder.append("]");
+		return builder.toString();
+	}
+	
 	
 	
 }

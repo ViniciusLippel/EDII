@@ -14,7 +14,7 @@ public class Main {
 		a.insert(9);
 		a.insert(4);
 		//a.insert(2);
-		a.delete(7);
+		//a.delete(7);
 		
 		AVLTree b = new AVLTree();
 		b.insert(10);
@@ -31,7 +31,8 @@ public class Main {
 		
 		//System.out.println(a.findNode(a.getRoot(), 5).getNum());
 		//System.out.println(a.verifyBalance(a.getRoot()));
-		System.out.println(a.isIdentical(b));
+		//System.out.println(a.isIdentical(b));
+		System.out.println(a.nodesByLevel());
 	}
 
 }

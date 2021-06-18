@@ -20,13 +20,6 @@ public class AVLTree {
 		else
 			addNode(root, num);
 	}
-	
-	//Delete value
-	/*public void delete(int num) {
-		Node aux = findNode(this.root, num);
-		Node auxR = aux.getRight();
-		Node.auxL = aux.getLeft();
-	}*/
 		
 	//Add Node
 	public void addNode(Node node, int num) {
@@ -43,37 +36,6 @@ public class AVLTree {
 				node.setLeft(new Node(num));
 		}
 	}
-	
-	//Delete Node
-	/*public void delete(int num) {
-		Node found = findNode(this.root, num);
-		System.out.println("Deletar nodo "+found.getNum());
-		if (found != null) {
-			if ((found.getRight() != null) && (found.getLeft() != null)) {
-				Node suc = findSuccessor(found);
-				if (suc == found.getRight()) {
-					found.setNum(suc.getNum());
-					found.setRight(suc.getRight());
-				}
-				else {
-					found.setNum(suc.getNum());
-				}
-			}
-			else if ((found.getRight() != null) && (found.getLeft() == null)) {
-				found.setNum(found.getRight().getNum());
-				found.setRight(found.getRight().getRight());
-				found.setLeft(found.getRight().getLeft());
-			}
-			else if ((found.getRight() == null) && (found.getLeft() != null)) {
-				found.setNum(found.getLeft().getNum());
-				found.setRight(found.getLeft().getRight());
-				found.setLeft(found.getLeft().getLeft());
-			}
-			else if((found.getRight() == null) && (found.getLeft() == null)) {
-				found = null;
-			}
-		}
-	}*/
 	
 	//Delete
 	public void delete(int num) {
@@ -164,7 +126,7 @@ public class AVLTree {
 		return compare(avl.getRoot(), this.root);
 	}
 	
-	//Compare two trees from root
+	//Compare two trees
 	public boolean compare(Node node1, Node node2) {
 		if (node1 == null && node2 == null) {
 			return true;
@@ -178,6 +140,44 @@ public class AVLTree {
 	    }
 		
 		return false;
+	}
+	
+	//String of nodes by each level
+	public String nodesByLevel() {
+		StringBuilder b = new StringBuilder();
+		if (this.root != null) {
+			b.append("Root: "+this.root.getNum());
+			int j = 1;
+			String s = nodesInLevel(this.root, 0, j);
+			while (s != "") {
+				b.append("\nLvl "+j+": "+s);
+				j++;
+				s = nodesInLevel(this.root, 0, j);
+			}
+		}
+		return b.toString();
+	}
+	
+	//String of nodes in specific level
+	public String nodesInLevel(Node node, int cLvl, int oLvl) {
+		if (node != null){
+			if(cLvl < oLvl-1) {
+				return nodesInLevel(node.getLeft(), cLvl+1, oLvl)+nodesInLevel(node.getRight(), cLvl+1, oLvl);
+			}
+			else{
+				StringBuilder b = new StringBuilder();
+				if (node.getLeft() != null) {
+					b.append(node.getLeft().getNum());
+					b.append(" ");
+				}
+				if (node.getRight() != null) {
+					b.append(node.getRight().getNum());
+					b.append(" ");
+				}
+				return b.toString();
+			}
+		}
+		return "";
 	}
 	
 	//Rotate left
