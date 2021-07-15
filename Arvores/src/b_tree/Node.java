@@ -8,6 +8,11 @@ public class Node {
 	private ArrayList<Key> keys;
 	private Node lastNode;
 	
+	public Node() {
+		this.numKeys = 0;
+		this.keys = new ArrayList<Key>();
+	}
+	
 	public int getNumKeys() {
 		return numKeys;
 	}
@@ -27,14 +32,36 @@ public class Node {
 		this.lastNode = lastNode;
 	}
 	
+	public void addKey(int num) {
+		Key k = new Key(num);
+		if(this.numKeys != 0) {
+			for(int i = 0; i<this.numKeys; i++) {
+				int aux = this.keys.get(i).getNum();
+				if(k.getNum() < aux) {
+					this.keys.get(i).setNum(k.getNum());
+					k = new Key(aux);
+				}
+			}
+		}
+		this.keys.add(k);
+		this.numKeys++;
+	}
+	
+	public void addPromoted(Node node) {
+		if(node.getKeys().get(0).getNum() > this.getKeys().get(this.getNumKeys()-1).getNum()) {
+			this.getKeys().add(node.getKeys().get(0));
+			this.lastNode = node.getLastNode();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Node [numKeys=");
 		builder.append(numKeys);
-		builder.append(", keys=");
-		builder.append(keys);
-		builder.append(", lastNode=");
+		builder.append(",keys=");
+		builder.append(keys.toString());
+		builder.append(",lastNode=");
 		builder.append(lastNode);
 		builder.append("]");
 		return builder.toString();

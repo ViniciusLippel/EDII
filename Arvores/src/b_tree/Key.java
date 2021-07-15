@@ -5,6 +5,10 @@ public class Key {
 	private Node prevNode;
 	private int num;
 	
+
+	public Key(int num) {
+		this.num = num;
+	}
 	
 	public Node getPrevNode() {
 		return prevNode;
