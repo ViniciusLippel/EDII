@@ -97,7 +97,7 @@ public class AVLTree {
 	}
 	
 	
-	//Verify tree balance
+	//Verify if tree is AVL
 	public boolean verifyAVL(Node node) {
 		
 		if (node == null)
@@ -162,7 +162,8 @@ public class AVLTree {
 	public String nodesInLevel(Node node, int cLvl, int oLvl) {
 		if (node != null){
 			if(cLvl < oLvl-1) {
-				return nodesInLevel(node.getLeft(), cLvl+1, oLvl)+nodesInLevel(node.getRight(), cLvl+1, oLvl);
+				return nodesInLevel(node.getLeft(), cLvl+1, oLvl)
+						+nodesInLevel(node.getRight(), cLvl+1, oLvl);
 			}
 			else{
 				StringBuilder b = new StringBuilder();

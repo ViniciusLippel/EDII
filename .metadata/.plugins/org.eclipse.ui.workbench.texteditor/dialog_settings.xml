@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="node"/>
+		<item key="selection" value="verifyAVL"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="verifyBalance"/>
+			<item value="a"/>
+			<item value="avl2"/>
+			<item value="avl1"/>
 			<item value="nodo"/>
 			<item value="Dir"/>
 			<item value="Esq"/>
@@ -19,12 +23,12 @@
 			<item value="Nodo"/>
 			<item value="nodoAnterior"/>
 			<item value="this.ArvoreAVL"/>
-			<item value="ARVORE"/>
-			<item value="ArvoreAVL"/>
-			<item value="vetorAleatorio"/>
-			<item value="gerarVetorAleatorio"/>
 		</list>
 		<list key="replacehistory">
+			<item value="verifyAVL"/>
+			<item value="b"/>
+			<item value="node2"/>
+			<item value="node1"/>
 			<item value="node"/>
 			<item value="Right"/>
 			<item value="Left"/>
@@ -36,10 +40,6 @@
 			<item value="Node"/>
 			<item value="addNodo"/>
 			<item value="ArvoreAVL"/>
-			<item value=""/>
-			<item value="gerarVetor"/>
-			<item value="vetorAleatorio"/>
-			<item value="gerarVetorAleatorio"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
