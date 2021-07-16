@@ -47,10 +47,29 @@ public class Node {
 		this.numKeys++;
 	}
 	
+	public void mergeNode(Node node) {
+		System.out.println("entrou");
+		if(node != null) {
+			for(int i=0; i<node.getNumKeys(); i++) {
+				System.out.println("oi");
+				keys.add(node.getKeys().get(i));
+			}
+		}
+	}
+	
 	public void addPromoted(Node node) {
 		if(node.getKeys().get(0).getNum() > this.getKeys().get(this.getNumKeys()-1).getNum()) {
 			this.getKeys().add(node.getKeys().get(0));
 			this.lastNode = node.getLastNode();
+		}
+		else {
+			boolean end = false;
+			int i = 0;
+			while(!end) {
+				if(node.getKeys().get(0).getNum() < this.keys.get(i).getNum()) {
+					
+				}
+			}
 		}
 	}
 	

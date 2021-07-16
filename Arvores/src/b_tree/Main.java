@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		BTree b = new BTree(5);
+		BTree b = new BTree(3);
 		b.insert(5);
 		b.insert(8);
 		b.insert(7);
@@ -16,7 +16,15 @@ public class Main {
 		a.insert(8);
 		
 		System.out.println(b.toString());
-		System.out.println(b.findPredNode(b.getRoot(), b.getRoot().getLastNode()));
+		
+		/*Node l = b.getRoot().getKeys().get(0).getPrevNode();
+		Node r = b.getRoot().getLastNode();
+		l.mergeNode(r);
+		System.out.println(l);*/
+		
+		//System.out.println(b.searchKey(b.getRoot(), 6));
+		
+		//System.out.println(b.findPredNode(b.getRoot(), b.getRoot().getLastNode()));
 		
 		//System.out.println(b.findNode(b.getRoot(), 2));
 		//b.insert(2);

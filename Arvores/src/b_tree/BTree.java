@@ -26,6 +26,7 @@ public class BTree {
 		this.root = root;
 	}
 	
+	//INSERTING METHODS
 	
 	//Insert
 	public void insert(int num) {
@@ -35,6 +36,14 @@ public class BTree {
 		else {
 			this.root = new Node();
 			root.addKey(num);
+		}
+	}
+	
+	//AddInNode
+	public void addInNode(Node node, int num) {
+		node.addKey(num);
+		if(node.getNumKeys()>order-1) {
+			this.root = this.split(node);
 		}
 	}
 	
@@ -52,6 +61,45 @@ public class BTree {
 		}
 	}
 	
+	
+	//SEARCHING METHODS
+	
+	
+	//Recursive search
+	public Key searchKey(Node node, int num) {
+		for(int i=0; i<node.getNumKeys(); i++) {
+			if(num < node.getKeys().get(i).getNum()) 
+				return searchKey(node.getKeys().get(i).getPrevNode(), num);
+			else if (num == node.getKeys().get(i).getNum())
+				return node.getKeys().get(i);
+		}
+		return searchKey(node.getLastNode(), num);
+	}
+	
+	public Node searchKeyNode(Node node, int num) {
+		for(int i=0; i<node.getNumKeys(); i++) {
+			if(num < node.getKeys().get(i).getNum()) 
+				return searchKeyNode(node.getKeys().get(i).getPrevNode(), num);
+			else if (num == node.getKeys().get(i).getNum())
+				return node;
+		}
+		return searchKeyNode(node.getLastNode(), num);
+	}
+	
+	
+	//Delete
+	public void delete(int num) {
+		Node node = searchKeyNode(root, num);
+		Key key = searchKey(root, num);
+		Node prevNode = key.getPrevNode();
+		int i = node.getKeys().indexOf(key);
+		node.getKeys().remove(i);
+		node.getKeys().get(i-1).getPrevNode().mergeNode(prevNode);
+		node.setNumKeys(node.getNumKeys()-1);
+	}
+	
+	
+	//Find Predecessor Node
 	public Node findPredNode(Node node, Node nodeToFind) {
 		int num = nodeToFind.getKeys().get(0).getNum();
 		if (node.getLastNode()!=null) {
@@ -70,16 +118,6 @@ public class BTree {
 		}
 		else {
 			return null;
-		}
-	}
-	
-	//AddInNode
-	public void addInNode(Node node, int num) {
-		node.addKey(num);
-		if(node.getNumKeys()>order-1) {
-			this.root = this.split(node);
-			//Node aux = this.split(node);
-			//Node auxRight = aux.getLastNode();
 		}
 	}
 	
