@@ -1,15 +1,29 @@
 package b_tree;
 
+/* Classe Key:
+ * Representa uma chave, um nodo é formado de várias chaves.
+ * Armazena: 
+ * 	- Nodo filho à esquerda 
+ * 	- Número inteiro.
+ */
 public class Key {
 	
+	/*
+	 * Atributos
+	 */
 	private Node prevNode;
 	private int num;
 	
-
+	/*
+	 * Construtor
+	 */
 	public Key(int num) {
 		this.num = num;
 	}
 	
+	/*
+	 * Getters & Setters
+	 */
 	public Node getPrevNode() {
 		return prevNode;
 	}
@@ -23,6 +37,9 @@ public class Key {
 		this.num = num;
 	}
 	
+	/*
+	 * To String
+	 */
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

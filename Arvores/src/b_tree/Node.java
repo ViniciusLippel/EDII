@@ -2,17 +2,35 @@ package b_tree;
 
 import java.util.ArrayList;
 
+/* Classe Node:
+ * Representa o nodo.
+ * 
+ * Armazena:
+ * 	- Número de chaves
+ * 	- ArrayList de chaves
+ * 	- Último nodo (nodo filho mais à direita)
+ */
+
 public class Node {
 	
+	/*
+	 * Atributos
+	 */
 	private int numKeys;
 	private ArrayList<Key> keys;
 	private Node lastNode;
 	
+	/*
+	 * Construtor
+	 */
 	public Node() {
 		this.numKeys = 0;
 		this.keys = new ArrayList<Key>();
 	}
 	
+	/*
+	 * Getters & Setters
+	 */
 	public int getNumKeys() {
 		return numKeys;
 	}
@@ -32,6 +50,10 @@ public class Node {
 		this.lastNode = lastNode;
 	}
 	
+	/* 
+	 * Método addKey:
+	 * 	- Recebe um número inteiro, cria uma chave e armazena no nodo
+	 */
 	public void addKey(int num) {
 		Key k = new Key(num);
 		if(this.numKeys != 0) {
@@ -47,32 +69,21 @@ public class Node {
 		this.numKeys++;
 	}
 	
+	/* 
+	 * Método mergeNode:
+	 * 	- Funde o nodo atual com outro nodo (não verifica se está ordenado)
+	 */
 	public void mergeNode(Node node) {
-		System.out.println("entrou");
 		if(node != null) {
 			for(int i=0; i<node.getNumKeys(); i++) {
-				System.out.println("oi");
 				keys.add(node.getKeys().get(i));
 			}
 		}
 	}
 	
-	public void addPromoted(Node node) {
-		if(node.getKeys().get(0).getNum() > this.getKeys().get(this.getNumKeys()-1).getNum()) {
-			this.getKeys().add(node.getKeys().get(0));
-			this.lastNode = node.getLastNode();
-		}
-		else {
-			boolean end = false;
-			int i = 0;
-			while(!end) {
-				if(node.getKeys().get(0).getNum() < this.keys.get(i).getNum()) {
-					
-				}
-			}
-		}
-	}
-	
+	/*
+	 * To String
+	 */
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

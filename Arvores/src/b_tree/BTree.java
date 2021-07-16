@@ -2,17 +2,34 @@ package b_tree;
 
 import java.util.ArrayList;
 
+/*
+ * Classe BTree:
+ * Classe que estrutura a árvore B.
+ * 
+ * Armazena:
+ * 	- Ordem da árvore
+ * 		> Número de filhos que cada nodo pode ter
+ * 	- Nodo raiz
+ */
 public class BTree {
 	
+	/*
+	 * Atributos
+	 */
 	private int order;
 	private Node root;
 	
-	//Constructor
+	/*
+	 * Construtor
+	 * 	- Ao instanciar a árvore deve ser informada a ordem.
+	 */
 	public BTree(int order) {
 		this.order = order;
 	}
 	
-	//Getters & Setters
+	/*
+	 * Getters & Setters
+	 */
 	public int getOrder() {
 		return order;
 	}
@@ -26,9 +43,14 @@ public class BTree {
 		this.root = root;
 	}
 	
-	//INSERTING METHODS
 	
-	//Insert
+	/* 
+	 * Método insert:
+	 *  - Recebe um valor inteiro
+	 * 	- Verifica se a árvore já possui raiz
+ * 			> Se sim, busca o nodo e adiciona o valor
+ * 			> Senão, cria nodo raiz com o valor
+	 */
 	public void insert(int num) {
 		if (this.root != null) {
 			addInNode(findNode(this.root, num), num);
@@ -39,15 +61,20 @@ public class BTree {
 		}
 	}
 	
-	//AddInNode
+	/*
+	 * Método addInNode:
+	 *  - Recebe o o nodo onde será armazenado e o valor
+	 *  - Chama a função addKey do nodo
+	 */
 	public void addInNode(Node node, int num) {
 		node.addKey(num);
-		if(node.getNumKeys()>order-1) {
-			this.root = this.split(node);
-		}
 	}
 	
-	//FindNode
+	/*
+	 * Método findNode:
+	 *  - Busca e retorna o nodo onde o valor será armazenado.
+	 *  - Recebe o nodo onde será iniciada a busca e o valor.
+	 */
 	public Node findNode(Node node, int num) {
 		if (node.getLastNode()!=null) {
 			for(int i=0; i<node.getNumKeys(); i++) {
@@ -62,10 +89,11 @@ public class BTree {
 	}
 	
 	
-	//SEARCHING METHODS
-	
-	
-	//Recursive search
+	/*
+	 * Método searchKey:
+	 *  - Busca e retorna a chave onde está armazenado determinado valor
+	 *  - Recebe o nodo onde será iniciada a busca e o valor.
+	 */
 	public Key searchKey(Node node, int num) {
 		for(int i=0; i<node.getNumKeys(); i++) {
 			if(num < node.getKeys().get(i).getNum()) 
@@ -76,6 +104,11 @@ public class BTree {
 		return searchKey(node.getLastNode(), num);
 	}
 	
+	/*
+	 * Método searchKeyNode:
+	 *  - Busca e retorna o nodo onde determinada chave está armazenada
+	 *  - Recebe o nodo onde será iniciada a busca e o valor.
+	 */
 	public Node searchKeyNode(Node node, int num) {
 		for(int i=0; i<node.getNumKeys(); i++) {
 			if(num < node.getKeys().get(i).getNum()) 
@@ -87,7 +120,12 @@ public class BTree {
 	}
 	
 	
-	//Delete
+	/*
+	 * Método delete:
+	 *  - Deleta a chave de um determinado valor
+	 *  - Recebe o valor da chave que será deletada
+	 *  - Chama o método 
+	 */
 	public void delete(int num) {
 		Node node = searchKeyNode(root, num);
 		Key key = searchKey(root, num);
@@ -99,29 +137,12 @@ public class BTree {
 	}
 	
 	
-	//Find Predecessor Node
-	public Node findPredNode(Node node, Node nodeToFind) {
-		int num = nodeToFind.getKeys().get(0).getNum();
-		if (node.getLastNode()!=null) {
-			for(int i=0; i<node.getNumKeys(); i++) {
-				if(num < node.getKeys().get(i).getNum()) {
-					if (node.getKeys().get(i).getPrevNode() == nodeToFind)
-						return node;
-					else
-						return findPredNode(node.getKeys().get(i).getPrevNode(), nodeToFind);
-				}
-			}
-			if(node.getLastNode() == nodeToFind)
-				return node;
-			else
-				return findPredNode(node.getLastNode(), nodeToFind);
-		}
-		else {
-			return null;
-		}
-	}
-	
-	//Split
+	/*
+	 * Método split:
+	 * 	- Divide um nodo cheio em dois nodos
+	 * 	- Recebe nodo a ser dividido
+	 * 	- Retorna valor que deve ser promovido
+	 */
 	public Node split(Node node) {
 		Node right = new Node();
 		Node left = new Node();
@@ -145,7 +166,9 @@ public class BTree {
 	
 	
 	
-	//To String/
+	/*
+	 * To String
+	 */
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

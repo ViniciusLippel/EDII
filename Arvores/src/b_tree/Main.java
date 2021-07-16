@@ -1,48 +1,62 @@
 package b_tree;
 
+import java.util.ArrayList;
+
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		BTree b = new BTree(3);
-		b.insert(5);
-		b.insert(8);
-		b.insert(7);
-		b.insert(6);
-		b.insert(3);
+		//Árvore
+		BTree b = new BTree(5);
+		//10 e 20 ficarão no nodo raiz
+		b.insert(10);
+		b.insert(20);
 		
-		BTree a = new BTree(5);
-		a.insert(7);
-		a.insert(8);
+		//Nodo mais à esquerda (armazenado na chave 10)
+		Node left = new Node();
+		Key k1 = new Key(3);
+		Key k2 = new Key(6);
+		ArrayList<Key> keys = new ArrayList<Key>();
+		keys.add(k1);
+		keys.add(k2);
+		left.setKeys(keys);
+		left.setNumKeys(2);
 		
+		//Nodo ao meio (armazenado na chave 20)
+		Node middle = new Node();
+		k1 = new Key(13);
+		keys = new ArrayList<Key>();
+		keys.add(k1);
+		keys.add(k2);
+		middle.setKeys(keys);
+		middle.setNumKeys(2);
+		
+		//Nodo mais à direita (armazenado no nodo raiz)
+		Node right = new Node();
+		k1 = new Key(24);
+		k2 = new Key(26);
+		keys = new ArrayList<Key>();
+		keys.add(k1);
+		keys.add(k2);
+		right.setKeys(keys);
+		right.setNumKeys(2);
+		
+		b.getRoot().getKeys().get(0).setPrevNode(left);
+		b.getRoot().getKeys().get(1).setPrevNode(middle);
+		b.getRoot().setLastNode(right);
+		
+		//Mostrando árvore
 		System.out.println(b.toString());
 		
-		/*Node l = b.getRoot().getKeys().get(0).getPrevNode();
-		Node r = b.getRoot().getLastNode();
-		l.mergeNode(r);
-		System.out.println(l);*/
+		//Inserindo 16
+		b.insert(16);
+		System.out.println(b.toString());
 		
-		//System.out.println(b.searchKey(b.getRoot(), 6));
+		//Deletando 20
+		b.delete(20);
+		System.out.println(b.toString());
 		
-		//System.out.println(b.findPredNode(b.getRoot(), b.getRoot().getLastNode()));
-		
-		//System.out.println(b.findNode(b.getRoot(), 2));
-		//b.insert(2);
-		//b.insert(9);
-		//b.insert(10);
-		//System.out.println(b.findNode(b.getRoot(), 11));
-		
-		//b.split(b.getRoot());
-		
-		/*BTree b = new BTree(5);
-		b.insert(23);
-		
-		Node left = new Node();
-		left.addKey(7);
-		left.addKey(10);
-		
-		Node middle1 = new Node();
-		middle1.addKey(25);*/
+		//Buscando 3
+		System.out.println(b.searchKey(b.getRoot(), 3));
 	}
 
 }
