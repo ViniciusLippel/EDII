@@ -25,25 +25,29 @@ public class ListaAdjacencia implements GrafoI {
 		listaAdj[origem] = novo;
 		
 		//para grafos nao direcionados
-		novo = new vertice();
-		novo.num = origem;
-		novo.prox = listaAdj[destino];
-		listaAdj[destino] = novo;
+		if(this.direcionado) {
+			novo = new vertice();
+			novo.num = origem;
+			novo.prox = listaAdj[destino];
+			listaAdj[destino] = novo;
+		}
 	}
 	
 	@Override
 	public void removerAresta(int origem, int destino) {
-		// TODO Auto-generated method stub
-		
+		vertice novo = new vertice();
+		novo.num = listaAdj[destino].prox.num;
+		novo.prox = listaAdj[destino].prox.prox;
+		listaAdj[origem] = novo;
 	}
 	
 	public void mostrar() {
 		vertice v;
 		for (int i=0; i<qtdVertices; i++) {
 			v = listaAdj[i];
-			System.out.println("V[ertice " + i + " ");
+			System.out.print("\nVértice " + i + " ");
 			while (v != null) {
-				System.out.println("(" + i + ", " + v.num + ")" + " ");
+				System.out.print("(" + i + ", " + v.num + ")" + " ");
 				v = v.prox;
 			}
 		}

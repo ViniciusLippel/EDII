@@ -5,12 +5,26 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		GrafoI grafo = criarGrafo();
-		grafo = inserirArestas(grafo);
-		System.out.println("\nGrafo:");
-		grafo.mostrar();
+		Scanner sc= new Scanner(System.in);
+		int menu = -1;
+		while(menu != 0) {
+			System.out.println("1 - Novo Grafo \n2 - Inserir Arestas \n3 - Remover Arestas \n4 - Mostrar Representção \n0 - Finalizar");
+			menu = sc.nextInt();
+			
+			GrafoI grafo = new MatrizAdjacencia(0, false);
+			
+			if(menu == 1)
+				grafo = criarGrafo();
+			else if (menu == 2)
+				grafo = inserirArestas(grafo);
+			System.out.print("\nGrafo:");
+			grafo.mostrar();
+			
+			grafo.removerAresta(1, 3);
+		}
+		sc.close();
 	}
+	
 	
 	@SuppressWarnings("resource")
 	public static GrafoI criarGrafo() {

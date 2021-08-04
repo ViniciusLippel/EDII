@@ -14,7 +14,7 @@ public class MatrizAdjacencia implements GrafoI {
 	
 	public void inserirAresta(int origem, int destino) {
 		G[origem][destino] = 1;
-		if(!direcionado)
+		if(this.direcionado)
 			G[destino][origem] = 1;		
 	}
 	
@@ -27,6 +27,7 @@ public class MatrizAdjacencia implements GrafoI {
 	public void mostrar() {
 		//i = linhas
 		//j = colunas
+		System.out.println();
 		for (int i=1; i<G.length; i++) {
 			for (int j=1; j<G.length; j++) {
 				System.out.print(G[i][j] + " ");
