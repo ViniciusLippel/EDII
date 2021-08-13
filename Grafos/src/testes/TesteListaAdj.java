@@ -45,7 +45,7 @@ public class TesteListaAdj {
 			
 		System.out.println("\nGrafo completo?");
 		System.out.println(a.grafoCompleto());
-		
+
 	}
 
 }

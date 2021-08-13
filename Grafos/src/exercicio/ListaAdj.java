@@ -149,7 +149,4 @@ public class ListaAdj{
 		return mi;
 	}
 	
-	
-	//Busca em largura
-	//public void buscaLargura();
 }
